@@ -1,0 +1,624 @@
+//eğer bilgisayarınızda ardiuno yoksa tüm kolar burda verilmiştir....
+//talebiniz halinde oluşturulan şeyler getirilebilir. en son halinde 360 stepper motor dönüyor bir kart sistemine bağlı bir şekilde ama arduino benim olmadığı için staj yerimde kaldı ödünç alınabilir
+
+
+//alt kısımdaki pinler
+const int LED1 = 4; 
+const int LED2 = 5;  
+const int LED3 = 6;   
+const int LED4 = 7;  
+
+// üst kısımdaki pinler
+
+const int LED5 = 8; 
+const int LED6 = 9;   
+const int LED7 = 10;  
+const int LED8 = 11; 
+
+
+
+void setup() {
+  pinMode(LED1, OUTPUT);   
+  pinMode(LED2, OUTPUT); 
+  pinMode(LED3, OUTPUT); 
+  pinMode(LED4, OUTPUT);   
+  pinMode(LED5, OUTPUT);   
+  pinMode(LED6, OUTPUT);   
+  pinMode(LED7, OUTPUT);   
+  pinMode(LED8, OUTPUT);   
+}
+
+void loop(){
+// 9 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, LOW);  
+delay(1000);
+// 8 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, LOW);
+delay(1000);  
+// 7 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, HIGH);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, HIGH);
+delay(1000);  
+// 6 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, HIGH);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, LOW);
+delay(1000);  
+// 5 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, HIGH);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, LOW);
+delay(1000); 
+// 4 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, HIGH);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, HIGH);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, LOW);
+delay(1000);
+// 3 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, HIGH);
+  digitalWrite(LED8, LOW);
+delay(1000);
+// 2 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, HIGH); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, HIGH);
+  digitalWrite(LED8, LOW);
+delay(1000);
+// 1 yazdırıyoruz
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, HIGH);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, HIGH);
+  digitalWrite(LED7, HIGH);
+  digitalWrite(LED8, HIGH);
+delay(1000);
+// 0 yazdırıyoruz.
+  digitalWrite(LED1, HIGH); 
+  digitalWrite(LED2, LOW); 
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, LOW);
+  digitalWrite(LED6, LOW);
+  digitalWrite(LED7, LOW);
+  digitalWrite(LED8, HIGH);  
+delay(1000);
+}
+///////
+#define Buton 8
+#define Led 6
+#define ArdLed 13
+#define STEPPER_PIN_1 9
+#define STEPPER_PIN_2 10
+#define STEPPER_PIN_3 11
+#define STEPPER_PIN_4 12
+int step_number = 0;
+int a=0;
+void setup() {
+
+  pinMode(Buton, INPUT);
+  pinMode(Led, OUTPUT);
+   pinMode(ArdLed, OUTPUT); 
+pinMode(STEPPER_PIN_1, OUTPUT);
+pinMode(STEPPER_PIN_2, OUTPUT);
+pinMode(STEPPER_PIN_3, OUTPUT);
+pinMode(STEPPER_PIN_4, OUTPUT);
+
+}
+
+void loop() {
+
+/*
+if(a==3){
+     digitalWrite(Led,HIGH);
+   digitalWrite(ArdLed,HIGH);  
+  delay(1000);               
+ digitalWrite(Led,LOW);
+  digitalWrite(ArdLed,LOW);   
+  delay(1000);             
+        }
+        else{
+          */
+    if( digitalRead(Buton) == 1){
+        
+        //delay(5); 
+        digitalWrite(Led,HIGH);
+   digitalWrite(ArdLed,HIGH);
+//a++;
+
+//while(1); 
+
+ 
+  
+  }
+  else{
+  digitalWrite(Led,LOW);
+  digitalWrite(ArdLed,LOW);
+  }
+   // }
+for(int i=0;i<1;i++){
+  for(int i=0;i<2;i++){
+    for(int a =0;a<1026;a++){
+     OneStep(true);
+      delay(2);
+  
+}
+}
+}
+  delay(1000);
+  
+}
+
+
+void OneStep(bool dir){
+    if(dir){
+switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+} 
+  }else{
+    switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+ 
+  
+} 
+  }
+step_number++;
+  if(step_number > 3){
+    step_number = 0;
+    }
+}
+///////
+
+#define STEPPER_PIN_1 9
+#define STEPPER_PIN_2 10
+#define STEPPER_PIN_3 11
+#define STEPPER_PIN_4 12
+int step_number = 0;
+void setup() {
+pinMode(STEPPER_PIN_1, OUTPUT);
+pinMode(STEPPER_PIN_2, OUTPUT);
+pinMode(STEPPER_PIN_3, OUTPUT);
+pinMode(STEPPER_PIN_4, OUTPUT);
+
+}
+// düğmeye basıldıysa led yak. 
+//kaç kere led yaktığını ekrana yazdır. 
+void loop() {
+ for(int i=0;i<10;i++){
+for(int i=0;i<2;i++){
+for(int a =0;a<1026;a++){
+  OneStep(true);
+  delay(2);
+  
+}
+}
+}
+  delay(9000);
+  
+}
+
+
+void OneStep(bool dir){
+    if(dir){
+switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+} 
+  }else{
+    switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+ 
+  
+} 
+  }
+step_number++;
+  if(step_number > 3){
+    step_number = 0;
+    }
+  
+}
+////////////
+const int buton = 6;
+int sayac = 0; 
+int butonDurumu = 0;  
+
+void setup() {
+ pinMode(buton, INPUT);
+ Serial.begin(9600);
+}
+void loop() {
+ butonDurumu = digitalRead(buton);
+ if (butonDurumu == HIGH) {
+   delay(10); 
+   sayac ++; 
+   Serial.print("Butona ");
+   Serial.print(sayac); 
+   Serial.println(". defa basildi.");
+   while(butonDurumu == HIGH){
+     butonDurumu = digitalRead(buton);
+   }
+   delay(10);
+ }
+}
+/////
+
+
+
+
+#define STEPPER_PIN_1 9
+#define STEPPER_PIN_2 10
+#define STEPPER_PIN_3 11
+#define STEPPER_PIN_4 12
+int step_number = 0;
+
+void setup() {
+  
+pinMode(STEPPER_PIN_1, OUTPUT);
+pinMode(STEPPER_PIN_2, OUTPUT);
+pinMode(STEPPER_PIN_3, OUTPUT);
+pinMode(STEPPER_PIN_4, OUTPUT);
+
+}
+
+void loop() {
+  
+ for(int i=0;i<1;i++){
+  for(int i=0;i<2;i++){
+    for(int a =0;a<1026;a++){
+     OneStep(true);
+      delay(2);
+  
+}
+}
+}
+  delay(1000);
+  
+}
+
+
+void OneStep(bool dir){
+    if(dir){
+switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+} 
+  }else{
+    switch(step_number){
+  case 0:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, HIGH);
+  break;
+  case 1:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, HIGH);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 2:
+  digitalWrite(STEPPER_PIN_1, LOW);
+  digitalWrite(STEPPER_PIN_2, HIGH);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+  break;
+  case 3:
+  digitalWrite(STEPPER_PIN_1, HIGH);
+  digitalWrite(STEPPER_PIN_2, LOW);
+  digitalWrite(STEPPER_PIN_3, LOW);
+  digitalWrite(STEPPER_PIN_4, LOW);
+ 
+  
+} 
+  }
+step_number++;
+  if(step_number > 3){
+    step_number = 0;
+    }
+
+}
+//////
+#define STEPPER_PIN_1 9
+#define STEPPER_PIN_2 10
+#define STEPPER_PIN_3 11
+#define STEPPER_PIN_4 12
+int step_number = 0;
+
+const int buton = 6;
+int sayac = 0;
+int butonDurumu = 0;
+
+void setup() {
+
+
+  pinMode(STEPPER_PIN_1, OUTPUT);
+  pinMode(STEPPER_PIN_2, OUTPUT);
+  pinMode(STEPPER_PIN_3, OUTPUT);
+  pinMode(STEPPER_PIN_4, OUTPUT);
+
+  pinMode(buton, INPUT);
+  Serial.begin(9600);
+
+}
+
+void loop() {
+
+
+  for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 4; i++) {
+      for (int a = 0; a < 512; a++) {
+
+        butonDurumu = digitalRead(buton);
+        if (butonDurumu == HIGH) {
+          delay(10);
+          sayac ++;
+          Serial.print("Butona ");
+          Serial.print(sayac);
+          Serial.println(". defa basildi.");
+          while (butonDurumu == HIGH) {
+            butonDurumu = digitalRead(buton);
+          }
+          delay(10);
+        }
+        OneStep(true);
+        delay(2);
+
+      }
+    }
+  }
+  delay(1000);
+
+}
+
+
+void OneStep(bool dir) {
+  if (dir) {
+    switch (step_number) {
+      case 0:
+        digitalWrite(STEPPER_PIN_1, HIGH);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, LOW);
+        break;
+      case 1:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, HIGH);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, LOW);
+        break;
+      case 2:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, HIGH);
+        digitalWrite(STEPPER_PIN_4, LOW);
+        break;
+      case 3:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, HIGH);
+        break;
+    }
+  } else {
+    switch (step_number) {
+      case 0:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, HIGH);
+        break;
+      case 1:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, HIGH);
+        digitalWrite(STEPPER_PIN_4, LOW);
+        break;
+      case 2:
+        digitalWrite(STEPPER_PIN_1, LOW);
+        digitalWrite(STEPPER_PIN_2, HIGH);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, LOW);
+        break;
+      case 3:
+        digitalWrite(STEPPER_PIN_1, HIGH);
+        digitalWrite(STEPPER_PIN_2, LOW);
+        digitalWrite(STEPPER_PIN_3, LOW);
+        digitalWrite(STEPPER_PIN_4, LOW);
+
+
+    }
+  }
+  step_number++;
+  if (step_number > 3) {
+    step_number = 0;
+  }
+
+
+}
+////////
+  
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12,11,5,4,3,2);
+
+void setup() {
+lcd.begin(16,2);
+lcd.clear();
+lcd.print("Naber Millet!");
+}
+
+void loop() {
+
+}
+//////
+#define Buton 8
+#define Led 10
+void setup()
+{
+  pinMode(Buton, INPUT);
+  pinMode(Led, OUTPUT);
+}
+
+void loop()
+{
+  if (digitalRead(Buton) == 1)
+  digitalWrite(Led,HIGH);
+  else
+  digitalWrite(Led,LOW);
+}
